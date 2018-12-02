@@ -34,7 +34,7 @@ students_db="./source/students.db"
 scores_db="./source/scores.db"
 
 
-#创建数据文件
+#创建数据文件✔
 mkdir_sourcedir(){
 	if [ ! -d $source_dir ];then
 		mkdir -p $source_dir
@@ -54,7 +54,7 @@ mkdir_sourcedir(){
 }
 
 
-# 主函数
+# 主函数✔
 Welcome() 
 {
 	# reset
@@ -65,7 +65,7 @@ Welcome()
 	Module
 }
 
-#模块选择
+#模块选择✔
 Module(){
 	clear
 	echo -e "\t\t\t**********************"
@@ -97,7 +97,7 @@ Module(){
 #学院信息模块功能实现
 ###############
 
-#学院信息模块菜单
+#学院信息模块菜单✔
 Menu1(){
 	clear
 	echo -e "\t\t\t**********************"
@@ -152,7 +152,7 @@ Menu1(){
 	Menu1
 }
 
-#1.添加学院信息
+#1.添加学院信息✔
 add_school(){
 	read -p "school_num:" school_num
 	#防止输入空格
@@ -171,7 +171,7 @@ add_school(){
 	echo -e "$school_num,\t$school_name,\r" >> $schools_db
 }
 
-#2.删除学院
+#2.删除学院✔
 del_school(){
 	read -p "请输入学院的编号" school_num
 	while  ! grep -w "$school_num" "$schools_db" > /dev/null ; do
@@ -200,13 +200,13 @@ del_school(){
 	esac
 }
 
-#3.展示全部学院信息
+#3.展示全部学院信息✔
 display_schools(){
 	echo -e "编号\t学院\t"
 	cat $schools_db
 }
 
-#4.查找学院
+#4.查找学院✔
 find_school(){
 	echo "--------------------------"
 	echo "输入要查询的学院编号"
@@ -218,7 +218,7 @@ find_school(){
 	echo "查询成功"
 }
 
-#5.修改学院信息
+#5.修改学院信息✔
 update_school(){
 	echo "--------------------------"
 	read -p "输入学院编号:" school_num
@@ -289,7 +289,7 @@ update_school(){
 #学生信息模块功能实现
 ###################
 
-#学生信息模块菜单
+#学生信息模块菜单✔
 Menu2() {
 	clear
 	echo -e "\t\t\t**********************"
@@ -343,7 +343,7 @@ Menu2() {
 	Menu2
 } 
 
-#1.添加学生信息
+#1.添加学生信息✔
 add_student(){
 	read -p "stu_num:" stu_num
 	while grep -w "$stu_num" "$students_db" > /dev/null ;do 
@@ -364,7 +364,7 @@ add_student(){
 
 }
 
-#2.删除学生
+#2.删除学生✔
 del_student(){
 	read -p "请输入要删除的学生的学号" num
 	echo "该学生的信息为："
@@ -519,7 +519,7 @@ modify_student() {
 #成绩信息模块功能实现
 ###################
 
-#成绩信息模块菜单
+#成绩信息模块菜单✔
 Menu3() {
 	clear
 	echo -e "\t\t\t**********************"
@@ -578,7 +578,7 @@ Menu3() {
 	Menu3
 }
 
-#成绩统计模块
+#成绩统计模块✔
 score_count(){
 	clear
 	echo -e "\t\t\t**********************"
@@ -616,7 +616,7 @@ score_count(){
 	score_count
 }
 
-#1.添加成绩
+#1.添加成绩✔
 input_score_info(){ #成绩信息输入
 	read -p "stu_num:" stu_num
 	while ! grep -w "$stu_num" "$students_db" > /dev/null ;do 
@@ -644,7 +644,7 @@ add_score(){ #添加成绩
 	grep  -w $stu_num $scores_db|grep  -w $course #学号和科目确定成绩的唯一性
 }
 
-#2.删除成绩"
+#2.删除成绩✔
 del_score(){
 read -p "请输入学生的学号" num
 read -p "请输入该学生要删除的科目" score
@@ -670,14 +670,14 @@ case "$choice" in
 	esac
 }
 
-#3.成绩列表"
+#3.成绩列表✔
 display_scores(){
 echo ""
 echo -e "学号\t姓名\t科目\t     成绩 说明"
 cat $scores_db|column -t
 }
 
-#4.查找成绩"
+#4.查找成绩✔
 search_score_num(){
 read -p "输入要查看的学生的学号" num
 read -p "输入要查看的科目" score
@@ -685,7 +685,7 @@ echo -e "学号\t姓名\t科目\t成绩\t说明"
 grep "^$num," $scores_db|grep "$score,"
 }
 
-#5.修改成绩"
+#5.修改成绩✔
 modify_score() {
 	echo "--------------------------"
 	read -p "输入学号(不能有空格):" num
@@ -785,7 +785,7 @@ modify_score() {
 	esac
 }
 
-#6.个人总成绩前5名排序"
+#6.个人总成绩前5名排序✔
 sort_score_sum_five(){
 	echo "-----------总成绩前1到5名---------------"
 	printf "学号\t\t总成绩\t排名\t\n";
@@ -793,7 +793,7 @@ sort_score_sum_five(){
 	echo "--------------------------"
 }
 
-#7.每个学科的前3名
+#7.每个学科的前3名✔
 such_course_sort_score(){
 awk 'BEGIN{FS=","}{ary[$3]=$3} END{for(key in ary) print ary[key]}' $scores_db > temp
 size=$(cat temp|wc -l)
@@ -814,6 +814,6 @@ rm -rf temp
 
 
 
-#程序入口
+#程序入口✔
 Welcome
 exit 0
